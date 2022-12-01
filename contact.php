@@ -63,6 +63,7 @@ include("includes/header.php");
 </div>
 <?php
 // add Footer
+include("includes/footer.php");
 ?>
 <script src="js/main.js"></script>
 </body>

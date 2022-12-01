@@ -29,6 +29,7 @@ include("includes/header.php");
 
 <?php
 // add Footer
+include("includes/footer.php");
 ?>
 
     <script src="js/main.js"></script>
