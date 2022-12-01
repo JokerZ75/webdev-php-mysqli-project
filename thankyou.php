@@ -1,20 +1,20 @@
-<?php 
-  require_once("includes/config.php");
-  $query = "INSERT INTO Contacts (Firstname,Surname,Email,Tele,HereFrom) VALUES(?)";
-  $validQuery = true;
-  $additionalData = "";
-  foreach ($_POST as $key => $value){
-    if (is_null($value) || empty($value)){
-      $validQuery = false;
-    }
-    else {
-      $additionalData = $additionalData . "{$value},";
-    }
+<?php
+require_once("includes/config.php");
+$validQuery = true;
+$additionalData = "";
+foreach ($_POST as $key => $value) {
+  if (is_null($value) || empty($value)) {
+    $validQuery = false;
+  } else {
+    $additionalData = $additionalData . "{$value},";
   }
-  $additionalData = substr($additionalData,0,-1);
-  $stmt = $mysqli->prepare($query);
+}
+if ($validQuery) {
+  $additionalData = substr($additionalData, 0, -1);
+  $stmt = $mysqli->prepare("INSERT INTO Contacts (Firstname,Surname,Email,Tele,HereFrom) VALUES(?)");
   $stmt->bind_param('s',$additionalData);
   $stmt->execute();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
