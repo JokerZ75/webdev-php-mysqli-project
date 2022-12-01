@@ -21,16 +21,19 @@
       </div>
       <section class="twoColumn">
         <?php
+        echo "<table>";
         foreach ($_POST as $key => $value) {
           echo "<tr>";
-          echo "<td class=\"uc\">";
+          echo "<td class = \"uc\">";
           echo $key;
           echo "</td>";
           echo "<td>";
           echo $value;
           echo "</td>";
-          echo "<tr>";
+          echo "</tr>";
+          
         }
+        echo "</table>";
         ?>
         <div class="sideBar">
           <h3>Featured Film</h3>
