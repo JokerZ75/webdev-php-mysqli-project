@@ -1,5 +1,6 @@
 <?php
 require_once("includes/config.php");
+
 $queryFilms = "SELECT * FROM films";
 $resultFilms = $mysqli->query($queryFilms);
 ?>
@@ -34,7 +35,7 @@ $resultFilms = $mysqli->query($queryFilms);
             <?php
             while ($obj = $resultFilms->fetch_object()) {
               echo "<tr>";
-              echo "<td>{$obj->filmTitle}</td>";
+              echo"<td><a href=\"film-details.php?filmID={$obj->filmID}\">{$obj->filmTitle}</a></td>";
               echo "<td>{$obj->filmCertificate}</td>";
               echo "<td>&pound; {$obj->filmPrice}</td>";
               echo "</tr>";

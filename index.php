@@ -32,7 +32,7 @@ $resultFilms = $mysqli->query($queryFilms);
           echo "<div>";
           echo "<img src=\"images/{$obj->filmImage}\" alt=\"{$obj->filmTitle}\">";
           echo "</div>";
-          echo "<h3>{$obj->filmTitle}</h3>";
+          echo "<h3><a href=\"film-details.php?filmID={$obj->filmID}\">{$obj->filmTitle}</a></h3>";
           echo "</div>";
         }
         ?>
