@@ -1,3 +1,21 @@
+<?php 
+  require_once("includes/config.php");
+  $query = "INSERT INTO Contacts (Firstname,Surname,Email,Tele,HereFrom) VALUES(?)";
+  $validQuery = true;
+  $additionalData = "";
+  foreach ($_POST as $key => $value){
+    if (is_null($value) || empty($value)){
+      $validQuery = false;
+    }
+    else {
+      $additionalData = $additionalData . "{$value},";
+    }
+  }
+  $additionalData = substr($additionalData,0,-1);
+  $stmt = $mysqli->prepare($query);
+  $stmt->bind_param('s',$additionalData);
+  $stmt->execute();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +39,7 @@
       </div>
       <section class="twoColumn">
         <?php
+        echo "<p> $additionalData </p>";
         echo "<table>";
         foreach ($_POST as $key => $value) {
           echo "<tr>";
