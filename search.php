@@ -43,7 +43,6 @@ require_once("includes/config.php");
             $validSearch = false;
           } else {
             $validSearch = true;
-
             $searchQuery = "%" . $searchQuery . "%";
             $stmt = $mysqli->prepare("SELECT* FROM films WHERE filmTitle LIKE ?");
             $stmt->bind_param('s', $searchQuery);
@@ -62,11 +61,7 @@ require_once("includes/config.php");
           }
           ?>
         </div>
-        <div class="sideBar">
-          <h3>Featured Film</h3>
-          <div> <img src="images/babadook.jpg" alt="Babadook" /> </div>
-          <p>Info Here</p>
-        </div>
+        <?php include("includes/sidebar.php"); ?>
       </section>
     </main>
   </div>

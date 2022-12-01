@@ -31,15 +31,10 @@
           echo $value;
           echo "</td>";
           echo "</tr>";
-          
         }
         echo "</table>";
         ?>
-        <div class="sideBar">
-          <h3>Featured Film</h3>
-          <div> <img src="images/babadook.jpg" alt="Babadook" /> </div>
-          <p>Info Here</p>
-        </div>
+        <?php include("includes/sidebar.php"); ?>
       </section>
     </main>
   </div>

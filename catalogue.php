@@ -35,7 +35,7 @@ $resultFilms = $mysqli->query($queryFilms);
             <?php
             while ($obj = $resultFilms->fetch_object()) {
               echo "<tr>";
-              echo"<td><a href=\"film-details.php?filmID={$obj->filmID}\">{$obj->filmTitle}</a></td>";
+              echo "<td><a href=\"film-details.php?filmID={$obj->filmID}\">{$obj->filmTitle}</a></td>";
               echo "<td>{$obj->filmCertificate}</td>";
               echo "<td>&pound; {$obj->filmPrice}</td>";
               echo "</tr>";
@@ -43,11 +43,7 @@ $resultFilms = $mysqli->query($queryFilms);
             ?>
           </table>
         </div>
-        <div class="sideBar">
-          <h3>Featured Film</h3>
-          <div> <img src="images/babadook.jpg" alt="Babadook" /> </div>
-          <p>Info Here</p>
-        </div>
+        <?php include("includes/sidebar.php"); ?>
       </section>
     </main>
   </div>
