@@ -1,4 +1,7 @@
  <div class="footerContainer">
+  <?php
+    $year = date('y');
+  ?>
 <footer>
       <nav>
         <menu>
@@ -8,6 +11,6 @@
           <li><a href="#">Twitter</a></li>
         </menu>
       </nav>
-      <div>&copy;</div>
+      <div>&copy; <?php echo $year; ?></div>
     </footer>
 </div>
