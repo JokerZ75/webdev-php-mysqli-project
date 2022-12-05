@@ -44,7 +44,7 @@ require_once("includes/config.php");
           } else {
             $validSearch = true;
             $searchQuery = "%" . $searchQuery . "%";
-            $stmt = $mysqli->prepare("SELECT* FROM films WHERE filmTitle LIKE ?");
+            $stmt = $mysqli->prepare("SELECT * FROM films WHERE filmTitle LIKE ?");
             $stmt->bind_param('s', $searchQuery);
             $stmt->execute();
             $result = $stmt->get_result();
