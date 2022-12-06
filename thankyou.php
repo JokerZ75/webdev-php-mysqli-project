@@ -1,26 +1,21 @@
 <?php
 require_once("includes/config.php");
 $validQuery = true;
-$additionalData = "";
 foreach ($_POST as $key => $value) {
   if (is_null($value) || empty($value)) {
     $validQuery = false;
-  } else {
-    $additionalData = $additionalData . "'$value',";
   }
 }
 if ($validQuery) {
   $email = "{$_POST['Email']}";
-  $query = "SELECT * FROM Contacts WHERE Email = ?";
+  $query = "SELECT * FROM Contacts WHERE Email = ? OR Tele = ?";
   $stmt = $mysqli->prepare($query);
-  $stmt->bind_param('s', $email);
+  $stmt->bind_param('ss', $email, $_POST['Tel']);
   $stmt->execute();
   $result = $stmt->get_result();
   if ($result->num_rows == 0) {
-    $additionalData = substr($additionalData, 0, -1);
-    // $mysqli->query("INSERT INTO Contacts (Firstname,Surname,Email,Tele,HearFrom) VALUES ({$additionalData});");
-    $stmt = $mysqli->prepare("INSERT INTO Contacts (Firstname,Surname,Email,Tele,HearFrom) VALUES ( {$additionalData} )");
-    // $stmt->bind_param('s',$additionalData);
+    $stmt = $mysqli->prepare("INSERT INTO Contacts (Firstname,Surname,Email,Tele,HearFrom) VALUES ( ? , ? , ? , ? , ? )");
+    $stmt->bind_param('sssss',$_POST['firstname'], $_POST['surname'], $_POST['Email'], $_POST['Tel'], $_POST['marketing']);
     $stmt->execute();
     $result = $stmt->get_result();
   }
