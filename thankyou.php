@@ -17,7 +17,6 @@ if ($validQuery) {
     $stmt = $mysqli->prepare("INSERT INTO Contacts (Firstname,Surname,Email,Tele,HearFrom) VALUES ( ? , ? , ? , ? , ? )");
     $stmt->bind_param('sssss',$_POST['firstname'], $_POST['surname'], $_POST['Email'], $_POST['Tel'], $_POST['marketing']);
     $stmt->execute();
-    $result = $stmt->get_result();
   }
 }
 ?>
